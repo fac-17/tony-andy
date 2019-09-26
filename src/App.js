@@ -18,16 +18,18 @@ function App() {
 
   const { login, avatar_url } = gameData[randomizer(gameData.length)];
 
+  const randomName1 = gameData[randomizer(gameData.length)].login;
+
+  const randomName2 = gameData[randomizer(gameData.length)].login;
+
   return (
 <section>
     <Userimage imgSrc={avatar_url}/>
-    <UserNames userNames={login}/>
+    <UserNames userNames={login} randomName1 = {randomName1} randomName2 = {randomName2}/>
+
 </section>
     
   )
-  
-  
-  
 
 }
 
