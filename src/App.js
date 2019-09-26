@@ -6,8 +6,10 @@ import "./App.css";
 import { getGithub } from "./utils/utils";
 import randomizer from "./utils/randomiser";
 
+
 function App() {
   const [gameData, setGameData] = React.useState(null);
+  const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
     getGithub().then(data => setGameData(data));
@@ -22,11 +24,11 @@ function App() {
 
   const randomName2 = gameData[randomizer(gameData.length)].login;
 
+
   return (
 <section>
     <Userimage imgSrc={avatar_url}/>
-    <UserNames userNames={login} randomName1 = {randomName1} randomName2 = {randomName2}/>
-
+    <UserNames count={count} setCount={setCount} userNames={login} randomName1 = {randomName1} randomName2 = {randomName2}/>
 </section>
     
   )
