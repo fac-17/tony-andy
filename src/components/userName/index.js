@@ -1,13 +1,16 @@
 import React from "react";
-import { getGithub } from "../../utils/utils";
+import { shuffler } from "../../utils/shuffler";
 
 export const UserNames = ({ userNames, randomName1, randomName2 }) => {
-  return (
-  <>
-  <p>{userNames}</p>
-  <p>{randomName1}</p>
-  <p>{randomName2}</p>
-  </>
-  )
-};
+  const newArray = shuffler([userNames, randomName1, randomName2]);
 
+  return (
+    <div>
+      {newArray.map((e, i) => (
+        <label htmlFor={e} key={e[i]}>
+          <p>{e}</p>
+        </label>
+      ))}
+    </div>
+  );
+};
