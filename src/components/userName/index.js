@@ -20,10 +20,10 @@ export const UserNames = ({
   console.log(newArray);
   return (
     <div>
-      <p>{count}</p>
+      <p>Score: {count}</p>
       {newArray.map((e, i) => (
         <label htmlFor={e} key={e}>
-          <button onClick={() => handleClick(e)}>{e}</button>
+          <button className="button-css" onClick={() => handleClick(e)}>{e}</button>
         </label>
       ))}
     </div>

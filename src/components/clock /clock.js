@@ -17,7 +17,7 @@ const Clock = ({ seconds, setSeconds, active, setActive }) => {
     return () => clearInterval(interval);
   }, [active, seconds]);
 
-  return <div>{seconds}</div>;
+  return <div className="clock-css">{seconds}</div>;
 };
 
 export default Clock;
