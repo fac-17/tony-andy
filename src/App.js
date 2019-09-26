@@ -5,11 +5,14 @@ import { UserNames } from "./components/userName/index";
 import "./App.css";
 import { getGithub } from "./utils/utils";
 import randomizer from "./utils/randomiser";
+import Clock from "./components/clock /clock";
 
 
 function App() {
   const [gameData, setGameData] = React.useState(null);
   const [count, setCount] = React.useState(0);
+  const [seconds, setSeconds] = React.useState(30);
+  const [active, setActive] = React.useState(true);
 
   React.useEffect(() => {
     getGithub().then(data => setGameData(data));
@@ -26,10 +29,11 @@ function App() {
 
 
   return (
-<section>
-    <Userimage imgSrc={avatar_url}/>
-    <UserNames count={count} setCount={setCount} userNames={login} randomName1 = {randomName1} randomName2 = {randomName2}/>
-</section>
+    <section>
+      <Userimage imgSrc={avatar_url}/>
+      <UserNames count={count} setCount={setCount} userNames={login} randomName1 = {randomName1} randomName2 = {randomName2}/>
+      <Clock seconds = {seconds} setSeconds = {setSeconds} active={active} setActive={setActive} />
+    </section>
     
   )
 
