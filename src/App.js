@@ -6,6 +6,7 @@ import "./App.css";
 import { getGithub } from "./utils/utils";
 import randomizer from "./utils/randomiser";
 import Clock from "./components/clock /clock";
+import PlayAgain from "./components/playAgain/playAgain"
 
 function App() {
   const [gameData, setGameData] = React.useState(null);
@@ -34,25 +35,32 @@ function App() {
 
   const { login, avatar_url } = answer;
 
-  return (
-    <section>
-      <Userimage imgSrc={avatar_url} />
-      <UserNames
-        count={count}
-        setCount={setCount}
-        userNames={login}
-        randomName1={randomName1}
-        randomName2={randomName2}
-      />
-
-      <Clock
-        seconds={seconds}
-        setSeconds={setSeconds}
-        active={active}
-        setActive={setActive}
-      />
-    </section>
-  );
+  if (seconds > 0) {
+    return (
+      <section>
+        <Userimage imgSrc={avatar_url} />
+        <UserNames
+          count={count}
+          setCount={setCount}
+          userNames={login}
+          randomName1={randomName1}
+          randomName2={randomName2}
+        />
+  
+        <Clock
+          seconds={seconds}
+          setSeconds={setSeconds}
+          active={active}
+          setActive={setActive}
+        />
+      </section>
+    );
+  }
+  else {
+    return (
+      <PlayAgain count={count} />
+    )
+  };
 }
 
 export default App;
