@@ -6,7 +6,9 @@ import "./App.css";
 import { getGithub } from "./utils/utils";
 import randomizer from "./utils/randomiser";
 import Clock from "./components/clock /clock";
-import PlayAgain from "./components/playAgain/playAgain"
+import PlayAgain from "./components/playAgain/playAgain";
+import { arrayTypeAnnotation } from "@babel/types";
+import { randomBytes } from "crypto";
 
 function App() {
   const [gameData, setGameData] = React.useState(null);
@@ -23,9 +25,9 @@ function App() {
 
   React.useEffect(() => {
     if (gameData) {
+      answerUpdater(gameData.splice(randomizer(gameData.length), 1)[0]);
       nameUpdater1(gameData[randomizer(gameData.length)].login);
       nameUpdater2(gameData[randomizer(gameData.length)].login);
-      answerUpdater(gameData[randomizer(gameData.length)]);
     }
   }, [count, gameData]);
 
@@ -46,7 +48,7 @@ function App() {
           randomName1={randomName1}
           randomName2={randomName2}
         />
-  
+
         <Clock
           seconds={seconds}
           setSeconds={setSeconds}
@@ -55,12 +57,9 @@ function App() {
         />
       </section>
     );
+  } else {
+    return <PlayAgain count={count} />;
   }
-  else {
-    return (
-      <PlayAgain count={count} />
-    )
-  };
 }
 
 export default App;
