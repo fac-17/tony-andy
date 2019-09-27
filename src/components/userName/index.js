@@ -17,13 +17,14 @@ export const UserNames = ({
       setCount(count + 1);
     }
   };
-  console.log(newArray);
   return (
     <div>
       <p>Score: {count}</p>
       {newArray.map((e, i) => (
         <label htmlFor={e} key={e}>
-          <button className="button-css" onClick={() => handleClick(e)}>{e}</button>
+          <button className="button-css" onClick={() => handleClick(e)}>
+            {e}
+          </button>
         </label>
       ))}
     </div>
