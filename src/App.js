@@ -25,9 +25,11 @@ function App() {
 
   React.useEffect(() => {
     if (gameData) {
-      answerUpdater(gameData.splice(randomizer(gameData.length), 1)[0]);
-      nameUpdater1(gameData[randomizer(gameData.length)].login);
-      nameUpdater2(gameData[randomizer(gameData.length)].login);
+      let iterator = randomizer(gameData.length)
+      console.log(iterator)
+      answerUpdater(gameData[iterator[0]]);
+      nameUpdater1(gameData[iterator[1]].login);
+      nameUpdater2(gameData[iterator[2]].login);
     }
   }, [count, gameData]);
 
